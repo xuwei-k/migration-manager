@@ -147,7 +147,21 @@ class Main(args: List[String]) extends {
   }
 }
 
-object Main {
+object Main extends xsbti.AppMain {
+  class Exit(val code: Int) extends xsbti.Exit
+
+  def run(config: xsbti.AppConfiguration): Exit = {
+    val args = config.arguments.toList
+    val runner = new Main(args)
+
+    if (args.isEmpty || !runner.isDefined) {
+      println(runner.helpMsg)
+      new Exit(0)
+    } else {
+      new Exit(runner.run())
+    }
+  }
+
   def main(args: Array[String]): Unit = {
     val runner = new Main(args.toList)
 

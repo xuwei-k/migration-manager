@@ -1,0 +1,10 @@
+[app]
+  version: 0.1.13-5-gb033899
+  org: com.typesafe
+  name: mima-reporter
+  class: com.typesafe.tools.mima.cli.Main
+[scala]
+  version: 2.10.6
+[repositories]
+  maven-central
+  local
