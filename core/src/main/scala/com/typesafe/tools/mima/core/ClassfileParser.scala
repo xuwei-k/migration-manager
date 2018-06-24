@@ -158,7 +158,7 @@ abstract class ClassfileParser(definitions: Definitions) {
         val start = starts(index)
         if (in.buf(start).toInt != CONSTANT_NAMEANDTYPE) errorBadTag(start)
         val name = getName(in.getChar(start + 1).toInt)
-        var tpe  = getName(in.getChar(start + 3).toInt)
+        val tpe  = getName(in.getChar(start + 3).toInt)
         p = (name, tpe)
       }
       p
